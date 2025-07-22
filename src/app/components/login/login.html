@@ -1,0 +1,16 @@
+<section class="login-section">
+    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="Introduce tu usuario" name="username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="Introduce tu contraseña" name="password" type="password"
+                   formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button class="submit-button" color="primary" type="submit">
+            <span>Entrar</span>
+        </button>
+    </form>
+</section>

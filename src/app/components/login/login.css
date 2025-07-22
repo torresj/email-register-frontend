@@ -1,0 +1,14 @@
+.login-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-title{
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
