@@ -2,9 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
-import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
+import {MatError, MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {AuthService} from "../../services/auth.service";
+import {AsyncPipe} from "@angular/common";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,10 @@ import {AuthService} from "../../services/auth.service";
     ReactiveFormsModule,
     MatFormField,
     MatLabel,
-    MatButton
+    MatButton,
+    AsyncPipe,
+    MatProgressSpinner,
+    MatError
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'

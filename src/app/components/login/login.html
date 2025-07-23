@@ -3,14 +3,33 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Usuario</mat-label>
             <input matInput placeholder="Introduce tu usuario" name="username" formControlName="username">
+            @if (submitted && form.get('username')?.errors?.['required']) {
+                <mat-error>Campo obligatorio</mat-error>
+            }
+
+            @if (submitted && form.get('username')?.invalid) {
+                <mat-error>Usuario o contraseña incorrecta</mat-error>
+            }
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input matInput placeholder="Introduce tu contraseña" name="password" type="password"
                    formControlName="password">
+            @if (submitted && form.get('password')?.errors?.['required']) {
+                <mat-error>Campo obligatorio</mat-error>
+            }
+
+            @if (submitted && form.get('password')?.invalid) {
+                <mat-error>Usuario o contraseña incorrecta</mat-error>
+            }
         </mat-form-field>
         <button mat-raised-button class="submit-button" color="primary" type="submit">
-            <span>Entrar</span>
+            @if (!(isLoading$ | async)) {
+                <span>Entrar</span>
+            } @else {
+                <mat-spinner class="login-spinner"></mat-spinner>
+            }
+
         </button>
     </form>
 </section>

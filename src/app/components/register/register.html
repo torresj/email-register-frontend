@@ -1,0 +1,32 @@
+<section class="register-section">
+    <mat-card class="register-card" appearance="raised">
+        @if (!(error$ | async) && !(success$ | async)) {
+            <h3 class="register-title">Introduce tu correo electrónico para añadirlo a la lista de distribución de Taracea</h3>
+            <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <input matInput placeholder="Email" name="email" type="email" formControlName="email">
+                    @if (submitted && form.get('email')?.invalid) {
+                        <mat-error>Formato de email incorrecto</mat-error>
+                    }
+                </mat-form-field>
+                <button mat-raised-button class="submit-button" color="primary" type="submit">
+                    @if (!(isLoading$ | async)) {
+                        <span>Registrar</span>
+                    } @else {
+                        <mat-spinner class="register-spinner"></mat-spinner>
+                    }
+
+                </button>
+            </form>
+        } @else {
+            @if (success$ | async) {
+                <p>Correo electrónico registrado correctamente.</p>
+            }
+
+            @if (error$ | async) {
+                <p>Ha habido un error registrado el correo electrónico. Por favor inténtelo de nuevo mas tarde.</p>
+            }
+        }
+
+    </mat-card>
+</section>

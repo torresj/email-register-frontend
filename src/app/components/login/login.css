@@ -12,3 +12,8 @@
     flex-direction: column;
     width: 350px;
 }
+
+.login-spinner{
+    height: 30px !important;
+    width: 30px !important;
+}

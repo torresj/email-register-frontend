@@ -28,3 +28,9 @@ html {
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 }
+
+:root {
+  @include mat.fab-overrides((
+          container-color: orange
+  ));
+}

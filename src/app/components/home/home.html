@@ -1,1 +1,7 @@
-<p>home works!</p>
+<section class="home-section">
+    @if ((user$ | async)?.type == "ADMIN") {
+        <app-emails-management/>
+    } @else {
+        <app-register/>
+    }
+</section>
