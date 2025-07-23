@@ -10,7 +10,7 @@
 .login-form{
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 320px;
 }
 
 .login-spinner{
