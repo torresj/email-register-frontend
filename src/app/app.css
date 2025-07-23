@@ -56,6 +56,6 @@
 
 .logout-button{
     position: absolute;
-    top: 30px;
+    bottom: 30px;
     right: 25px;
 }

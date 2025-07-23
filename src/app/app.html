@@ -1,15 +1,14 @@
 <main class="layout">
-
     <header class="header">
         <h1 class="logo">Taracea</h1>
         <p class="tagline">Registro de correos</p>
-        @if ((user$ | async) != null) {
-            <button matFab class="logout-button" (click)="logout()">
-                <mat-icon>logout</mat-icon>
-            </button>
-        }
     </header>
     <router-outlet />
+    @if ((user$ | async) != null) {
+        <button matFab class="logout-button" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    }
 </main>
 
 <footer class="footer">
