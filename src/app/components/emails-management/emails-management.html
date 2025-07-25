@@ -1,1 +1,16 @@
-<p>emails-management works!</p>
+<section class="email-list-section">
+    <mat-card class="email-list-card" appearance="raised">
+        <span class="email-list-title">Lista de emails registrados</span>
+        <span class="total-emails">Total: {{(emails$ | async)?.length}}</span>
+        <section class="emails-list">
+            @for (email of emails$ | async; track email) {
+                <mat-card appearance="outlined" class="email-card">
+                    <span>{{email}}</span>
+                    <button matIconButton class="remove-button" (click)="deleteEmail(email)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-card>
+            }
+        </section>
+    </mat-card>
+</section>

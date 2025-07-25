@@ -1,0 +1,10 @@
+<section class="delete-email-section">
+    <h1 mat-dialog-title>Borrar email</h1>
+    <div mat-dialog-content>
+        ¿Quieres borrar el email {{data}} de la lista de distribución?
+    </div>
+    <div class="dialog-action-buttons" mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-button (click)="deleteEmail()">Borrar</button>
+    </div>
+</section>
