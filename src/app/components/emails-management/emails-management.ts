@@ -68,7 +68,7 @@ export class EmailsManagement implements OnInit {
             var a = document.createElement('a');
             a.href = fileURL;
             a.target = '_blank';
-            a.download = 'emails.pdf';
+            a.download = 'emails.txt';
             document.body.appendChild(a);
             a.click();
             this.isDownloading$.next(false);
