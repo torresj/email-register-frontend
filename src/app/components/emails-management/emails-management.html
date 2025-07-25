@@ -2,6 +2,7 @@
     <mat-card class="email-list-card" appearance="raised">
         <span class="email-list-title">Lista de emails registrados</span>
         <span class="total-emails">Total: {{(emails$ | async)?.length}}</span>
+        <button matButton="outlined" class="download-list-button" (click)="getEmailsFile()">Descargar lista</button>
         <section class="emails-list">
             @for (email of emails$ | async; track email) {
                 <mat-card appearance="outlined" class="email-card">

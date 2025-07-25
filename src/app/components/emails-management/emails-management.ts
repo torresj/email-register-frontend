@@ -4,7 +4,7 @@ import {MatCard} from "@angular/material/card";
 import {EmailsService} from "../../services/emails.service";
 import {BehaviorSubject} from "rxjs";
 import {AsyncPipe} from "@angular/common";
-import {MatIconButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {RemoveEmailDialog} from "../dialogs/remove-email-dialog/remove-email-dialog";
@@ -17,7 +17,8 @@ import {RemoveEmailDialog} from "../dialogs/remove-email-dialog/remove-email-dia
         ReactiveFormsModule,
         AsyncPipe,
         MatIcon,
-        MatIconButton
+        MatIconButton,
+        MatButton
     ],
   templateUrl: './emails-management.html',
   styleUrl: './emails-management.css'
@@ -25,6 +26,7 @@ import {RemoveEmailDialog} from "../dialogs/remove-email-dialog/remove-email-dia
 export class EmailsManagement implements OnInit {
 
     emails$ = new BehaviorSubject<string[]>([]);
+    isDownloading$ = new BehaviorSubject(false);
 
     constructor(
         private emailsService: EmailsService,
@@ -55,6 +57,22 @@ export class EmailsManagement implements OnInit {
             .subscribe({
                 next: () => this.updateEmailsList(),
             });
+    }
+
+    getEmailsFile() {
+        this.isDownloading$.next(true);
+        this.emailsService.getEmailsInFile().subscribe((data) => {
+            var file = new Blob([data], { type: 'text/plain' });
+            var fileURL = URL.createObjectURL(file);
+            window.open(fileURL);
+            var a = document.createElement('a');
+            a.href = fileURL;
+            a.target = '_blank';
+            a.download = 'emails.pdf';
+            document.body.appendChild(a);
+            a.click();
+            this.isDownloading$.next(false);
+        });
     }
 
 }
